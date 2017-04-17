@@ -16,13 +16,23 @@ bot.message((msg) => {
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
   // console.log(msg.text);
   const message = msg.text.split(" ");
-  console.log('w/o username:', message[1]);
+  const command = message[1];
+  let response = "I hear you loud and clear";
+  if(command === 'hello') {
+    response = "Hello there"
+  }
+
+  if(command === 'awake?') {
+    response = "yes I'm awake"
+  }
+
   slack.chat.postMessage({
     token: config('SLACK_TOKEN'),
     icon_emoji: config('ICON_EMOJI'),
     channel: msg.channel,
     username: 'Grace Hopper',
-    text: `beep boop: I hear you loud and clear!"`
+    text: `${response}`
+    // text: `beep boop: I hear you loud and clear!"`
   }, (err, data) => {
     if (err) throw err
 
