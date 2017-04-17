@@ -11,15 +11,18 @@ bot.started((payload) => {
   this.self = payload.self
 })
 
+const queue = [];
+
+
 bot.message((msg) => {
+  console.log('queue', queue, 'message', msg)
   if (!msg.user) return
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
   // console.log(msg.text);
   const message = msg.text.split(" ");
   const command = message[1];
   let response = "That is not one of the listed commands";
-  const queue = [];
-  const username = message[0];
+  const username = msg.user;
 
   if(command === 'hello') {
     response = "Hello there"
