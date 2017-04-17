@@ -15,6 +15,7 @@ const queue = [];
 
 
 bot.message((msg) => {
+  console.log('bot', bot)
   console.log('queue', queue, 'message', msg)
   if (!msg.user) return
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
@@ -45,8 +46,12 @@ bot.message((msg) => {
     response = `Current queue: ${queue}`;
   }
 
-   if(command === "clear") {
+  if(command === "clear") {
     queue = [];
+    response = `Current queue: ${queue}`;    
+  }
+
+  if(command === "status") {
     response = `Current queue: ${queue}`;    
   }
 
