@@ -12,10 +12,10 @@ bot.started((payload) => {
 })
 
 const queue = [];
-
+console.log('bot-api', bot)
 
 bot.message((msg) => {
-  console.log('bot-api', bot)
+  
   console.log('queue', queue, 'message', msg)
   if (!msg.user) return
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
