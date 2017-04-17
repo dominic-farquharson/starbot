@@ -45,6 +45,10 @@ bot.message((msg) => {
     response = `Current queue: ${queue}`;
   }
 
+   if(command === "clear") {
+    queue = [];
+  }
+
   slack.chat.postMessage({
     token: config('SLACK_TOKEN'),
     icon_emoji: config('ICON_EMOJI'),
