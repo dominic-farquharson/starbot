@@ -14,7 +14,9 @@ bot.started((payload) => {
 bot.message((msg) => {
   if (!msg.user) return
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
-  console.log(msg.text);
+  // console.log(msg.text);
+  const message = msg.text.split(" ");
+  console.log('w/o username:', message[1]);
   slack.chat.postMessage({
     token: config('SLACK_TOKEN'),
     icon_emoji: config('ICON_EMOJI'),
