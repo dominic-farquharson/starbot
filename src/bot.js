@@ -17,13 +17,21 @@ bot.message((msg) => {
   // console.log(msg.text);
   const message = msg.text.split(" ");
   const command = message[1];
-  let response = "I hear you loud and clear";
+  let response = "That is not one of the listed commands";
   if(command === 'hello') {
     response = "Hello there"
   }
 
   if(command === 'awake?') {
     response = "yes I'm awake"
+  }
+
+  if(command === 'awake?') {
+    response = "yes I'm awake"
+  };
+
+  if(message[1] === 'how' && message[2] === 'are' && message[3] === 'you' && message[4] === 'doing?') {
+    response = 'Not too bad actually.'
   }
 
   slack.chat.postMessage({
