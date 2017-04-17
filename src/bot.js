@@ -15,7 +15,7 @@ const queue = [];
 
 
 bot.message((msg) => {
-  console.log('bot', bot)
+  console.log('bot-api', bot)
   console.log('queue', queue, 'message', msg)
   if (!msg.user) return
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
