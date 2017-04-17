@@ -47,6 +47,7 @@ bot.message((msg) => {
 
    if(command === "clear") {
     queue = [];
+    response = `Current queue: ${queue}`;    
   }
 
   slack.chat.postMessage({
