@@ -18,6 +18,9 @@ bot.message((msg) => {
   const message = msg.text.split(" ");
   const command = message[1];
   let response = "That is not one of the listed commands";
+  const queue = [];
+  const username = message[0];
+
   if(command === 'hello') {
     response = "Hello there"
   }
@@ -32,6 +35,11 @@ bot.message((msg) => {
 
   if(message[1] === 'how' && message[2] === 'are' && message[3] === 'you' && message[4] === 'doing?') {
     response = 'Not too bad actually.'
+  }
+
+  if(command === "q-me") {
+    queue.push(username);
+    response = `Current queue: ${queue}`;
   }
 
   slack.chat.postMessage({
